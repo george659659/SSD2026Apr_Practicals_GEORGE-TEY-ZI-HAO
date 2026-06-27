@@ -14,7 +14,7 @@ console.log(`Server is running on http://localhost:${PORT}`);
 app.get("/about", (req, res) => {
  res.send("About Page");
 });
-
+ 
 // Define route for Contact Page
 app.get("/contact", (req, res) => {
  res.send("Contact Page");
