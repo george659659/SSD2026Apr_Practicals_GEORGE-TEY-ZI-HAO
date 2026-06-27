@@ -18,4 +18,4 @@ app.get("/about", (req, res) => {
 // Define route for Contact Page
 app.get("/contact", (req, res) => {
  res.send("Contact Page");
-});
+}); 
