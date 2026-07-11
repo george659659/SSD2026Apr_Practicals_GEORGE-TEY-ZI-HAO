@@ -1,0 +1,13 @@
+==================================================
+Practical 02 - Part A: Reflection & Q&A
+==================================================
+
+2. Reflection:
+In Part A of this practical, I learned how to implement a complete RESTful API using Express.js to perform CRUD operations on an in-memory dataset. I now clearly understand how different HTTP methods (GET, POST, PUT, DELETE) map to specific database actions like reading, creating, updating, and deleting resources. The main challenge I faced was ensuring proper error handling, such as returning 400 or 404 status codes when input data was invalid or a resource was not found.
+
+3. Q&A:
+Question 1: Why use POST for creating resources and PUT for updating?
+Answer: Under REST conventions, POST is used to submit data to a specified resource collection, which inherently triggers the server to create a *new* subordinate resource with a newly generated ID. PUT, on the other hand, is idempotent and is typically used to update or completely replace an *existing* specific resource at a known URL (e.g., /foods/:id).
+
+Question 2: What status code should be returned when attempting to update a non-existent resource?
+Answer: A 404 Not Found status code should be returned to indicate that the resource targeted for the update does not exist.

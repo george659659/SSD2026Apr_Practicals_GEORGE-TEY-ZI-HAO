@@ -1,0 +1,23 @@
+==================================================
+Practical 02 - Part B: Homework Report
+==================================================
+
+1. Role of API Elements:
+- app.use(express.json()): This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and makes the data available under the 'req.body' property. Without it, the server cannot read incoming JSON data.
+- req.body: Contains key-value pairs of data submitted in the request body (e.g., {"name": "Apple", "calories": 95} sent via a POST or PUT request).
+- req.query: Contains the query string parameters passed in the URL after the '?' symbol (e.g., in /foods?name=App, req.query.name captures 'App' for filtering data).
+- req.params.id: Captures the dynamic route parameter specified in the path (e.g., in /foods/:id, req.params.id extracts the specific ID of the food item to be updated or deleted).
+
+2. Significance of HTTP Methods and CRUD:
+HTTP methods define the semantic action intended for a specific resource, allowing the API to adhere to RESTful design principles. They map directly to CRUD operations:
+- POST maps to "Create" (adds a new food item).
+- GET maps to "Read" (retrieves all foods or a filtered list).
+- PUT maps to "Update" (completely replaces or modifies an existing food item by ID).
+- DELETE maps to "Delete" (removes a food item by ID).
+
+3. Meaning of HTTP Status Codes:
+- 200 OK: The request succeeded, and the server successfully returned the requested data or confirmation.
+- 201 Created: The request succeeded and resulted in the successful creation of a new resource (returned upon successful POST).
+- 400 Bad Request: The server cannot process the request due to client error, such as missing required fields like name or calories.
+- 404 Not Found: The server cannot find the requested resource (returned when an ID provided in PUT or DELETE does not exist).
+- 500 Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.
