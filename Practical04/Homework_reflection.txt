@@ -1,0 +1,31 @@
+Task 1: Reflection on Refactoring
+
+Q1:What were the main changes you made to refactor the code into MVC architecture?
+   Describe how you moved code between files and folders
+A1:
+    Main Changes: Broke down the monolithic app.js file into organized folders based on their responsibilities.
+    Code Movement: Moved database connection and SQL queries to the models/ folder. Moved request handling (req, res), status codes, and business logic to the controllers/ folder. Kept routing and initialization in app.js.
+
+Q2:What challenges did you face during the refactoring process?
+A2:Managing asynchronous control flow (async/await) and handling errors correctly across multiple files.
+
+Q3:How does the MVC structure change the way you think about adding new features or modifying existing ones compared to the previous non-MVC structure?
+A3:Instead of dumping everything into app.js, I now think in layers. I consider data needs first (Model), then response logic (Controller), and finally endpoints (Routes). This modular approach makes scaling and extending features much cleaner.
+    
+Q4:In what specific ways do you think the MVC version is more organized or easier to understand and maintain than the previous version where all logic was in app.js?
+A4:It dramatically shortens app.js, making it readable.
+
+Q5:5. Explain how separating concerns (putting database logic in the Model and request handling in the Controller) makes the code better from a development perspective.
+A5:It improves reusability (the same Model functions can be used for different tools/scripts) and testability (functions can be unit tested in isolation). It also reduces Git merge conflicts when multiple developers work on the same project.
+
+
+Task 2: Reflecting on Robustness & Security
+
+Q1: How does implementing input validation middleware make the API more reliable and user-friendly? Provide an example of invalid input that your validation would now handle.
+A1: It catches bad data before it hits the database, preventing server crashes and returning clear feedback (e.g., 400 Bad Request) so clients know what to fix. For example, it would block a request if the student's email lacks an '@' symbol or if the age is a negative number.
+
+Q2: Explain in your own words how parameterized queries prevent SQL injection attacks. Why is this approach fundamentally more secure than building SQL query strings by concatenating variable data?
+A2: Parameterized queries pre-compile the SQL query structure and treat user input strictly as literal values (data), never as executable code. String concatenation allows malicious text (like '1 OR 1=1') to alter the SQL command structure, whereas parameterized queries ensure malicious keywords are treated safely as harmless strings.
+
+Q3: Consider a potential security risk for an API (other than SQL injection, e.g., brute-force attacks, exposing sensitive data in responses). How might robust error handling (like not showing detailed error messages to the client) help mitigate such a risk?
+A3: Risk: Information Disclosure (where attackers study system vulnerabilities from error logs). Robust error handling mitigates this by intercepting raw errors, logging the technical details securely on the server for developers, and sending a safe, generic message (like {"error": "Internal Server Error"}) to the client to hide the system's inner workings.
